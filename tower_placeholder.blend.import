@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bcwpmv735esvj"
-path="res://.godot/imported/tower_placeholder.blend-507dd995dbab44ab3816111a67b28f82.scn"
+valid=false
 
 [deps]
 
 source_file="res://tower_placeholder.blend"
-dest_files=["res://.godot/imported/tower_placeholder.blend-507dd995dbab44ab3816111a67b28f82.scn"]
 
 [params]
 
