@@ -1,14 +1,14 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1726605454
-clouds.gdshader::Shader::-1::1726574307::0::1::::<><>::
+::res://::1726607775
+clouds.gdshader::Shader::-1::1726607189::0::1::::<><>::
 icon.svg::CompressedTexture2D::4805906987872742237::1726395680::1726396666::1::::<><>::
-player.gd::GDScript::-1::1726398568::0::1::::<>CharacterBody3D<>::
-player.tscn::PackedScene::7747848696409275140::1726574127::0::1::::<><>::res://player.gd
+player.gd::GDScript::-1::1726607020::0::1::::<>CharacterBody3D<>::
+player.tscn::PackedScene::7747848696409275140::1726607154::0::1::::<><>::res://player.gd
 README.md::TextFile::-1::1726572995::0::1::::<><>::
 screenshot2.png::CompressedTexture2D::1253189506812808678::1726572995::1726572996::1::::<><>::
 screenshot.png::CompressedTexture2D::2476468498974082763::1726572995::1726572996::1::::<><>::
-test_material.tres::StandardMaterial3D::3542371181655997054::1726574307::0::1::::<><>::uid://c0nxd4b5qnitv::::res://addons/godot-prototype-texture/PNG/grid_blue_512x512.png
-test_room.tscn::PackedScene::431886850426506942::1726574127::0::1::::<><>::uid://dind63cx816f5::::res://player.tscn<>uid://bqp7log4vo2fi::::res://test_material.tres
+test_material.tres::StandardMaterial3D::3542371181655997054::1726606098::0::1::::<><>::uid://c0nxd4b5qnitv::::res://addons/godot-prototype-texture/PNG/grid_blue_512x512.png
+test_room.tscn::PackedScene::431886850426506942::1726607189::0::1::::<><>::uid://dind63cx816f5::::res://player.tscn<>uid://bqp7log4vo2fi::::res://test_material.tres
 test_texture.png::CompressedTexture2D::8048822644039869953::1726573740::1726573752::1::::<><>::
 tower_placeholder.blend::PackedScene::2573148019713391643::1726400520::1726400522::1::::<><>::
 tower_placeholder.tscn::PackedScene::5290660731124177688::1726572118::0::1::::<><>::uid://bcwpmv735esvj::::res://tower_placeholder.blend
@@ -70,4 +70,3 @@ logo_pink_512x512.svg::CompressedTexture2D::2840237778133330365::1726572995::172
 logo_red_512x512.svg::CompressedTexture2D::5761109125088745265::1726572995::1726572996::1::::<><>::
 logo_white_512x512.svg::CompressedTexture2D::6668343496647158230::1726572995::1726572996::1::::<><>::
 logo_yellow_512x512.svg::CompressedTexture2D::5138016334712930926::1726572995::1726572996::1::::<><>::
-::res://Tower/::1726561852
