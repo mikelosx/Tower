@@ -1,8 +1,10 @@
 extends CharacterBody3D
 
 
-const SPEED = 10.0
-const JUMP_VELOCITY = 6.0
+const SPEED = 1.0
+const SPEED_LIMIT = 5.0
+const AIR_CONTROL = 3.0
+const JUMP = 6.0
 @onready var cam := $Camera3D
 
 
@@ -20,23 +22,50 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	velocity = _calculate_velocity(velocity, delta)
+	move_and_slide()
+
+
+func _calculate_velocity(v, delta):
+	if !is_on_floor():
+		v += get_gravity() * delta
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		v.y = JUMP
 	
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
-		var s = SPEED
-		if Input.is_action_just_pressed("ui_accept") and !is_on_floor():
-			velocity.y = 0
-			s = SPEED * 50
-		velocity.x = direction.x * s
-		velocity.z = direction.z * s
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		if Input.is_action_just_pressed("jump") and !is_on_floor():
+			v.y = 0
+		v.x += direction.x * SPEED
+		v.z += direction.z * SPEED
+	elif is_on_floor():
+		v.x -= move_toward(v.x, 0, SPEED)
+		v.z -= move_toward(v.z, 0, SPEED)
 	
-	move_and_slide()
+	#if !is_on_floor():
+		#v += get_gravity() * delta
+	#if Input.is_action_just_pressed("jump") and is_on_floor():
+		#v.y = JUMP
+	#
+	#var input_dir := Input.get_vector("left", "right", "foward", "back")
+	#var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	#if !is_on_floor():
+		#direction /= AIR_CONTROL
+	#
+	#if direction:
+		#print("z = " + str(v.z) + " | x = " + str(v.x))
+		#
+		#if v.x <= SPEED_LIMIT and v.x >= -SPEED_LIMIT:
+			#v.x += direction.x * SPEED
+		#if v.z <= SPEED_LIMIT and v.z >= -SPEED_LIMIT:
+			#v.z += direction.z * SPEED
+		#if v.z > SPEED_LIMIT or v.z < -SPEED_LIMIT: v.z -= move_toward(v.z, 0, SPEED)
+		#if v.x > SPEED_LIMIT or v.x < -SPEED_LIMIT: v.x -= move_toward(v.x, 0, SPEED)
+	#else:
+		#v.x -= move_toward(v.x, 0, SPEED)
+		#v.z -= move_toward(v.z, 0, SPEED)
+	
+	
+	return v
