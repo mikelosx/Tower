@@ -1,15 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dind63cx816f5"]
+[gd_scene load_steps=7 format=3 uid="uid://dind63cx816f5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_l1g5o"]
+[ext_resource type="Texture2D" uid="uid://caqat6lywvk8l" path="res://icon.svg" id="2_siud3"]
+[ext_resource type="PackedScene" uid="uid://bcwpmv735esvj" path="res://tower_placeholder.blend" id="3_jxisw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxqdb"]
+albedo_texture = ExtResource("2_siud3")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fb6wa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_euakv"]
 
 [node name="Player" type="CharacterBody3D"]
+floor_stop_on_slope = false
 script = ExtResource("1_l1g5o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_fxqdb")
 mesh = SubResource("CapsuleMesh_fb6wa")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
@@ -18,3 +25,15 @@ shape = SubResource("BoxShape3D_euakv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600491, 0)
+
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="tower_placeholder" parent="." instance=ExtResource("3_jxisw")]
+
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
