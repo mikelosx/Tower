@@ -7,10 +7,13 @@ const DASH_SPEED = 20.0
 const AIR_RESISTANCE = 6.0
 const WEIGHT = 2.0
 const JUMP = 15.0
+const TOTAL_DASHES = 1
 
 @onready var cam := $Camera3D
 
 var dashing = false
+var dash_off_cooldown = true
+var dash_count = 1
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -34,15 +37,27 @@ func _calculate_velocity(v, delta):
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	if Input.is_action_just_pressed("jump") and dashing:
+		$DashDuration.stop()
+		dashing = false
+	
+	
 	if !is_on_floor():
 		v += get_gravity() * delta * WEIGHT
-		if Input.is_action_just_pressed("jump") and direction:
-			v = direction * DASH_SPEED
-			dashing = true
-			$DashDuration.start()
 	else:
+		dash_count = TOTAL_DASHES
 		if Input.is_action_just_pressed("jump"):
 			v.y = JUMP
+	
+	if Input.is_action_just_pressed("dash") and direction:
+		if dash_off_cooldown and dash_count > 0:
+			v = direction * DASH_SPEED
+			$DashDuration.start()
+			dashing = true
+			$DashCooldown.start()
+			dash_off_cooldown = false
+			if !is_on_floor():
+				dash_count -= 1
 	
 	if dashing:
 		v.y = 0.0
@@ -68,3 +83,7 @@ func _calculate_velocity(v, delta):
 
 func _on_dash_duration_timeout() -> void:
 	dashing = false
+
+
+func _on_dash_cooldown_timeout() -> void:
+	dash_off_cooldown = true
