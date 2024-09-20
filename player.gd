@@ -1,12 +1,16 @@
 extends CharacterBody3D
 
 
-const SPEED = 1.0
-const SPEED_LIMIT = 5.0
-const AIR_CONTROL = 3.0
-const JUMP = 6.0
+const SPEED = 0.1
+const SPEED_LIMIT = 15.0
+const DASH_SPEED = 20.0
+const AIR_RESISTANCE = 6.0
+const WEIGHT = 2.0
+const JUMP = 15.0
+
 @onready var cam := $Camera3D
 
+var dashing = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -18,7 +22,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseMotion:
 			rotate_y(-event.relative.x * 0.01)
 			cam.rotate_x(-event.relative.y * 0.01)
-			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-90), deg_to_rad(60))
+			cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-90), deg_to_rad(60)) 
 
 
 func _physics_process(delta: float) -> void:
@@ -27,45 +31,40 @@ func _physics_process(delta: float) -> void:
 
 
 func _calculate_velocity(v, delta):
-	if !is_on_floor():
-		v += get_gravity() * delta
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		v.y = JUMP
-	
 	var input_dir := Input.get_vector("left", "right", "foward", "back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if direction:
-		if Input.is_action_just_pressed("jump") and !is_on_floor():
-			v.y = 0
-		v.x += direction.x * SPEED
-		v.z += direction.z * SPEED
-	elif is_on_floor():
-		v.x -= move_toward(v.x, 0, SPEED)
-		v.z -= move_toward(v.z, 0, SPEED)
+	if !is_on_floor():
+		v += get_gravity() * delta * WEIGHT
+		if Input.is_action_just_pressed("jump") and direction:
+			v = direction * DASH_SPEED
+			dashing = true
+			$DashDuration.start()
+	else:
+		if Input.is_action_just_pressed("jump"):
+			v.y = JUMP
 	
-	#if !is_on_floor():
-		#v += get_gravity() * delta
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#v.y = JUMP
-	#
-	#var input_dir := Input.get_vector("left", "right", "foward", "back")
-	#var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	#if !is_on_floor():
-		#direction /= AIR_CONTROL
-	#
-	#if direction:
-		#print("z = " + str(v.z) + " | x = " + str(v.x))
-		#
-		#if v.x <= SPEED_LIMIT and v.x >= -SPEED_LIMIT:
-			#v.x += direction.x * SPEED
-		#if v.z <= SPEED_LIMIT and v.z >= -SPEED_LIMIT:
-			#v.z += direction.z * SPEED
-		#if v.z > SPEED_LIMIT or v.z < -SPEED_LIMIT: v.z -= move_toward(v.z, 0, SPEED)
-		#if v.x > SPEED_LIMIT or v.x < -SPEED_LIMIT: v.x -= move_toward(v.x, 0, SPEED)
-	#else:
-		#v.x -= move_toward(v.x, 0, SPEED)
-		#v.z -= move_toward(v.z, 0, SPEED)
+	if dashing:
+		v.y = 0.0
 	
+	if is_on_floor():
+		if direction:
+			v.x = lerpf(v.x, direction.x * SPEED_LIMIT, SPEED)
+			v.z = lerpf(v.z, direction.z * SPEED_LIMIT, SPEED)
+		else:
+			v.x = lerpf(v.x, 0, SPEED)
+			v.z = lerpf(v.z, 0, SPEED)
+	else:
+		var s = SPEED / AIR_RESISTANCE
+		if direction:
+			v.x = lerpf(v.x, direction.x * SPEED_LIMIT, s)
+			v.z = lerpf(v.z, direction.z * SPEED_LIMIT, s)
+		else:
+			v.x = lerpf(v.x, 0, s)
+			v.z = lerpf(v.z, 0, s)
 	
 	return v
+
+
+func _on_dash_duration_timeout() -> void:
+	dashing = false
