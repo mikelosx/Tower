@@ -10,12 +10,14 @@ const JUMP = 15.0
 const TOTAL_DASHES = 1
 
 @onready var cam := $Camera3D
+@onready var ray := $Camera3D/RayCast3D
 
 var dashing = false
 var dash_off_cooldown = true
 var dash_count = 1
 
-func _unhandled_input(event: InputEvent) -> void:
+
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):

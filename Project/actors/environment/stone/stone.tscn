@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://rk0vhxof00ap"]
+
+[ext_resource type="Script" path="res://actors/environment/stone/stone.gd" id="1_oe5ih"]
+[ext_resource type="PackedScene" uid="uid://d26mqvn5tmgo" path="res://classes/interaction/interactable.tscn" id="2_6fpmk"]
+[ext_resource type="PackedScene" uid="uid://c4s3aqg1wktx0" path="res://actors/gui/interact_prompt/interact_prompt.tscn" id="3_743g0"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_t6ych"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ynwrt"]
+data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Stone" type="StaticBody3D"]
+script = ExtResource("1_oe5ih")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.776629, 0.344758, -0.527246, -0.629958, 0.425027, -0.650004, 0, 0.836955, 0.547271, 0, 0, 0)
+mesh = SubResource("PrismMesh_t6ych")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.776629, 0.344758, -0.527246, -0.629958, 0.425027, -0.650004, 0, 0.836955, 0.547271, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_ynwrt")
+
+[node name="Interactable" parent="." instance=ExtResource("2_6fpmk")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(0.776629, 0.344758, -0.527246, -0.629958, 0.425027, -0.650004, -2.98023e-08, 0.836955, 0.547271, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_ynwrt")
+
+[node name="InteractPrompt" parent="." instance=ExtResource("3_743g0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675535, 0)
+text = "Press E to Stone"
+
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="Interactable"]

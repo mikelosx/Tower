@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm0stfain1540"]
+
+[ext_resource type="Script" path="res://actors/player/gui/player_gui.gd" id="1_r0med"]
+
+[node name="PlayerGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r0med")
+
+[node name="LblWood" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 11.0
+offset_right = 88.0
+offset_bottom = 34.0
+text = "Wood: 0"
+
+[node name="LblStone" type="Label" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 33.0
+text = "Stone: 0"

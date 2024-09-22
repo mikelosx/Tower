@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://bekufgldk26jw"]
+
+[ext_resource type="Material" uid="uid://bqp7log4vo2fi" path="res://assets/Materials/test_material.tres" id="1_7fcet"]
+[ext_resource type="PackedScene" uid="uid://dind63cx816f5" path="res://actors/player/player.tscn" id="2_o0yuu"]
+[ext_resource type="PackedScene" uid="uid://cqeytnotdgwuk" path="res://actors/environment/tree/tree.tscn" id="3_rvdt5"]
+[ext_resource type="PackedScene" uid="uid://rk0vhxof00ap" path="res://actors/environment/stone/stone.tscn" id="4_a4qj2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4kom"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_hgqcn"]
+sky_material = SubResource("ProceduralSkyMaterial_u4kom")
+
+[sub_resource type="Environment" id="Environment_88psa"]
+background_mode = 2
+sky = SubResource("Sky_hgqcn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_hsjhn"]
+material = ExtResource("1_7fcet")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m0hib"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="TestGather" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.297375, -0.807912, 0.508769, 0, 0.532876, 0.846193, -0.954761, 0.251637, -0.158464, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_88psa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(98.8453, 0, 0, 0, 0.999999, 0, 0, 0, 87.9103, 0, 0, 0)
+mesh = SubResource("BoxMesh_hsjhn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+transform = Transform3D(0.0101168, 0, 0, 0, 1, 0, 0, 0, 0.0113752, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(98.8453, 0, 0, 0, 0.999999, 0, 0, 0, 87.9103, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_m0hib")
+
+[node name="Player" parent="." instance=ExtResource("2_o0yuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.465453, 3.17336, 0.0637689)
+
+[node name="Tree" parent="." instance=ExtResource("3_rvdt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+
+[node name="Stone" parent="." instance=ExtResource("4_a4qj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.14154, 0.499999, -7.79661)
