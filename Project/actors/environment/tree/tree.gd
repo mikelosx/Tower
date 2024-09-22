@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-
+@export var wood = 3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -17,6 +17,9 @@ func _on_interactable_focused(interactor: Interactor) -> void:
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	Inventory.wood += 1
+	wood -= 1
+	if wood <= 0:
+		$Interactable.active = false
 
 
 func _on_interactable_unfocused(interactor: Interactor) -> void:

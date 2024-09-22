@@ -22,7 +22,7 @@ func get_closest_interactable() -> Interactable:
 	for i in list:
 		distance = i.global_position.distance_to(global_position)
 		
-		if distance < closest_distance:
+		if distance < closest_distance and i.active:
 			closest = i as Interactable
 			closest_distance = distance
 	
