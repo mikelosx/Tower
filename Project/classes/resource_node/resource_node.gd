@@ -1,5 +1,5 @@
 extends StaticBody3D
-class_name Gatherable
+class_name ResourceNode
 
 @export var delete_on_depleted = false
 #var hide_on_depleted = false
