@@ -1,6 +1,12 @@
 extends StaticBody3D
+class_name Gatherable
 
-@export var stone = 3
+@export var delete_on_finished = false
+@export var quantity = 3
+@export var wood = false
+@export var stone = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -15,12 +21,19 @@ func _on_interactable_focused(interactor: Interactor) -> void:
 	$InteractPrompt.visible = true
 
 
-func _on_interactable_interacted(interactor: Interactor) -> void:
-	Inventory.stone += 1
-	stone -= 1
-	if stone <= 0:
-		$Interactable.active = false
-
-
 func _on_interactable_unfocused(interactor: Interactor) -> void:
 	$InteractPrompt.visible = false
+
+
+func _on_interactable_interacted(interactor: Interactor) -> void:
+	if wood: Inventory.wood += 1
+	else: Inventory.stone += 1
+	
+	quantity -= 1
+	if quantity <= 0:
+		_resource_depleted()
+
+
+func _resource_depleted():
+	if delete_on_finished: queue_free()
+	else: $Interactable.active = false

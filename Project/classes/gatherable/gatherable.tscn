@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://1ualai1gjo7r"]
+
+[ext_resource type="Script" path="res://classes/gatherable/gatherable.gd" id="1_xmfi6"]
+[ext_resource type="PackedScene" uid="uid://c4s3aqg1wktx0" path="res://actors/gui/interact_prompt/interact_prompt.tscn" id="2_pcgic"]
+[ext_resource type="PackedScene" uid="uid://d26mqvn5tmgo" path="res://classes/interaction/interactable.tscn" id="3_7nytx"]
+
+[node name="Gatherable" type="StaticBody3D"]
+script = ExtResource("1_xmfi6")
+
+[node name="InteractPrompt" parent="." instance=ExtResource("2_pcgic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.808567, -0.0445545)
+text = "Press E to Gather"
+
+[node name="Interactable" parent="." instance=ExtResource("3_7nytx")]
+
+[connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+
+[editable path="Interactable"]
