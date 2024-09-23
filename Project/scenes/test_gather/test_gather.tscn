@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bekufgldk26jw"]
 
-[ext_resource type="Material" uid="uid://bqp7log4vo2fi" path="res://assets/Materials/test_material.tres" id="1_7fcet"]
+[ext_resource type="Material" uid="uid://bqp7log4vo2fi" path="res://assets/materials/test_material.tres" id="1_7fcet"]
 [ext_resource type="PackedScene" uid="uid://dind63cx816f5" path="res://actors/player/player.tscn" id="2_o0yuu"]
 [ext_resource type="PackedScene" uid="uid://cqeytnotdgwuk" path="res://actors/environment/tree/tree.tscn" id="3_rvdt5"]
 [ext_resource type="PackedScene" uid="uid://rk0vhxof00ap" path="res://actors/environment/stone/stone.tscn" id="4_a4qj2"]
@@ -51,11 +51,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.465453, 3.17336, 0.0637689)
 
 [node name="Tree" parent="Gather" instance=ExtResource("3_rvdt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
-delete_on_finished = true
 
 [node name="Stone" parent="Gather" instance=ExtResource("4_a4qj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.14154, 0.499999, -7.79661)
-delete_on_finished = true
 
 [node name="Tree2" parent="Gather" instance=ExtResource("3_rvdt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.963, 0.499999, -7.42689)

@@ -13,8 +13,11 @@ text = "Press E to Gather"
 
 [node name="Interactable" parent="." instance=ExtResource("3_7nytx")]
 
+[node name="RegenTimer" type="Timer" parent="."]
+
 [connection signal="focused" from="Interactable" to="." method="_on_interactable_focused"]
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="unfocused" from="Interactable" to="." method="_on_interactable_unfocused"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 
 [editable path="Interactable"]

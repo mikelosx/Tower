@@ -5,4 +5,6 @@ signal interacted(interactor: Interactor)
 signal focused(interactor: Interactor)
 signal unfocused(interactor: Interactor)
 
-@export var active = true
+
+func active(x: bool):
+	$CollisionShape3D.disabled = !x
