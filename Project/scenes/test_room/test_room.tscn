@@ -1,8 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://gfhd4ahbkb8y"]
+[gd_scene load_steps=24 format=3 uid="uid://gfhd4ahbkb8y"]
 
 [ext_resource type="PackedScene" uid="uid://dind63cx816f5" path="res://actors/player/player.tscn" id="1_3lpdm"]
 [ext_resource type="Material" uid="uid://bqp7log4vo2fi" path="res://assets/materials/test_material.tres" id="2_5rbbn"]
 [ext_resource type="PackedScene" uid="uid://chm3n6d2o2lem" path="res://scenes/tower/tower_placeholder.tscn" id="3_h07on"]
+[ext_resource type="Material" uid="uid://bw5yf206agwon" path="res://sutas debug tools/debug materials/debugMat1024x.tres" id="4_7afgm"]
+[ext_resource type="ArrayMesh" uid="uid://bos8trtgr3juc" path="res://sutas debug tools/debug meshes/Mesh_Sub7.res" id="5_x6cf2"]
+[ext_resource type="Material" uid="uid://bo6yhtfbv3dyv" path="res://sutas debug tools/debug materials/debugMat256x.tres" id="6_5edo5"]
+[ext_resource type="ArrayMesh" uid="uid://cnoyqse672tw2" path="res://sutas debug tools/debug meshes/Mesh_Sub6.res" id="7_cdhid"]
+[ext_resource type="Material" uid="uid://cukioyr1st7q4" path="res://sutas debug tools/debug materials/debugMat4096x.tres" id="8_g8clx"]
+[ext_resource type="ArrayMesh" uid="uid://8hkwjws78lf0" path="res://sutas debug tools/debug meshes/Mesh_Sub3.res" id="9_lwg26"]
+[ext_resource type="Material" uid="uid://bowfcxlglwkoe" path="res://sutas debug tools/debug materials/debugMat512x.tres" id="10_5wurq"]
+[ext_resource type="ArrayMesh" uid="uid://dfol4est1u1ed" path="res://sutas debug tools/debug meshes/Mesh_Sub5.res" id="11_tiv3o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83427"]
 sky_top_color = Color(0.314854, 0.535495, 0.868969, 1)
@@ -121,6 +129,30 @@ skeleton = NodePath("../MeshInstance3D5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_05vgl")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6949, 12.5048, -53.6942)
+
+[node name="MeshSub7" type="MeshInstance3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.9046, -12.0048, 50.692)
+material_override = ExtResource("4_7afgm")
+mesh = ExtResource("5_x6cf2")
+skeleton = NodePath("../..")
+
+[node name="MeshSub6" type="MeshInstance3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.3812, -12.0048, 53.5699)
+material_override = ExtResource("6_5edo5")
+mesh = ExtResource("7_cdhid")
+
+[node name="MeshSub3" type="MeshInstance3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6501, -12.0048, 37.6574)
+material_override = ExtResource("8_g8clx")
+mesh = ExtResource("9_lwg26")
+
+[node name="MeshSub5" type="MeshInstance3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.0136, -12.0048, 44.7579)
+material_override = ExtResource("10_5wurq")
+mesh = ExtResource("11_tiv3o")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6949, 12.5048, -53.6942)
