@@ -2,7 +2,7 @@ extends StaticBody3D
 class_name ResourceNode
 
 @export var delete_on_depleted = false
-#var hide_on_depleted = false
+#@export var hide_on_depleted = false
 @export var regen_time = 60.0
 @export var quantity = 3
 var max_quantity: int
