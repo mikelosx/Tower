@@ -26,3 +26,11 @@ offset_top = 10.0
 offset_right = 160.0
 offset_bottom = 33.0
 text = "Stone: 0"
+
+[node name="LblTOre" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 36.0
+offset_right = 81.0
+offset_bottom = 59.0
+text = "TOre: 0"

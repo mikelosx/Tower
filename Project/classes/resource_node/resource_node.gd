@@ -8,6 +8,7 @@ class_name ResourceNode
 var max_quantity: int
 @export var wood = false
 @export var stone = false
+@export var TOre = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +32,7 @@ func _on_interactable_unfocused(interactor: Interactor) -> void:
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
 	if wood: Inventory.wood += 1
+	elif TOre: Inventory.tower_ore += 1
 	else: Inventory.stone += 1
 	quantity -= 1
 	if $RegenTimer.is_stopped: $RegenTimer.start()
