@@ -18,6 +18,8 @@ var dash_count = 1
 
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("build_menu"): _build_menu()
+	
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
@@ -83,6 +85,8 @@ func _calculate_velocity(v, delta):
 	return v
 
 
+func _build_menu():
+	pass
 func _on_dash_duration_timeout() -> void:
 	dashing = false
 

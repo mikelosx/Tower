@@ -53,7 +53,6 @@ func _resource_regenerated():
 
 
 func _on_regen_timer_timeout() -> void:
-	print("pass")
 	quantity += 1
 	_resource_regenerated()
 	if quantity >= max_quantity:
