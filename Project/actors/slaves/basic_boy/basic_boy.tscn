@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://di3cpsr3i6hmd"]
+[gd_scene load_steps=7 format=3 uid="uid://di3cpsr3i6hmd"]
 
-[ext_resource type="Material" uid="uid://bqp7log4vo2fi" path="res://assets/materials/test_material.tres" id="1_jxn3h"]
+[ext_resource type="PackedScene" uid="uid://cd7q1i6ufjkck" path="res://classes/interaction/interactor.tscn" id="1_axs8h"]
+[ext_resource type="Texture2D" uid="uid://ogshc75sq1bi" path="res://addons/godot-prototype-texture/PNG/checker_red_512x512.png" id="1_c0j1p"]
+[ext_resource type="PackedScene" uid="uid://d26mqvn5tmgo" path="res://classes/interaction/interactable.tscn" id="3_7wua5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy3eb"]
+albedo_texture = ExtResource("1_c0j1p")
 
 [sub_resource type="SphereMesh" id="SphereMesh_okxgk"]
 
@@ -12,9 +17,13 @@ mass = 0.1
 freeze = true
 freeze_mode = 1
 
+[node name="Interactor" parent="." instance=ExtResource("1_axs8h")]
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_jxn3h")
+material_override = SubResource("StandardMaterial3D_vy3eb")
 mesh = SubResource("SphereMesh_okxgk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_yxeox")
+
+[node name="Interactable" parent="." instance=ExtResource("3_7wua5")]

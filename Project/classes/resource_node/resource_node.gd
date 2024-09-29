@@ -31,9 +31,9 @@ func _on_interactable_unfocused(interactor: Interactor) -> void:
 
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	if wood: Inventory.wood += 1
-	elif TOre: Inventory.tower_ore += 1
-	else: Inventory.stone += 1
+	if wood: Town.wood += 1
+	elif TOre: Town.TOre += 1
+	else: Town.stone += 1
 	quantity -= 1
 	if $RegenTimer.is_stopped: $RegenTimer.start()
 	
