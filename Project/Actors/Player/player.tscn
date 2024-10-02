@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dind63cx816f5"]
+[gd_scene load_steps=6 format=3 uid="uid://dind63cx816f5"]
 
-[ext_resource type="Script" path="res://Actors/Player/player.gd" id="1_l1g5o"]
+[ext_resource type="Script" path="res://actors/player/player.gd" id="1_l1g5o"]
 [ext_resource type="Texture2D" uid="uid://caqat6lywvk8l" path="res://icon.svg" id="2_siud3"]
-[ext_resource type="PackedScene" uid="uid://bcwpmv735esvj" path="res://Scenes/Tower/tower_placeholder.blend" id="3_jxisw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxqdb"]
 albedo_texture = ExtResource("2_siud3")
@@ -24,13 +23,11 @@ transform = Transform3D(1, 0, 0, 0, 2.00426, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_euakv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600491, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991225, 0)
 
 [node name="DashDuration" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
-
-[node name="tower_placeholder" parent="." instance=ExtResource("3_jxisw")]
 
 [node name="DashCooldown" type="Timer" parent="."]
 wait_time = 0.5
