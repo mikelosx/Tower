@@ -12,12 +12,23 @@ config_version=5
 
 config/name="3dTest"
 run/main_scene="res://scenes/test_room/test_room.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+
 config/icon="res://icon.svg"
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="3dTest"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrabrush/plugin.cfg")
 
 [autoload]
 
 Inventory="*res://global/inventory.gd"
+
 
 [input]
 
