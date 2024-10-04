@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bowfcxlglwkoe"]
+
+[ext_resource type="Texture2D" uid="uid://e2ap17sgivej" path="res://sutas debug tools/debug texpool/512x512.png" id="1_o3srb"]
+
+[resource]
+albedo_texture = ExtResource("1_o3srb")
+metallic_specular = 0.0
+texture_filter = 2
+texture_repeat = false
