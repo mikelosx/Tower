@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dind63cx816f5"]
+
+[ext_resource type="Script" path="res://actors/player/player.gd" id="1_l1g5o"]
+[ext_resource type="Texture2D" uid="uid://caqat6lywvk8l" path="res://icon.svg" id="2_siud3"]
+[ext_resource type="PackedScene" uid="uid://dl5gejplv6kmc" path="res://actors/player/player_interactor.tscn" id="3_svamw"]
+[ext_resource type="PackedScene" uid="uid://bm0stfain1540" path="res://actors/player/gui/player_gui.tscn" id="4_pq4wf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxqdb"]
+albedo_texture = ExtResource("2_siud3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fb6wa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_euakv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7rmg"]
+size = Vector3(1, 0.92041, 5.10681)
+
+[node name="Player" type="CharacterBody3D"]
+floor_stop_on_slope = false
+script = ExtResource("1_l1g5o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_fxqdb")
+mesh = SubResource("CapsuleMesh_fb6wa")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.00426, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_euakv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991225, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -5)
+collide_with_areas = true
+
+[node name="PlayerInteractor" parent="Camera3D" node_paths=PackedStringArray("player") instance=ExtResource("3_svamw")]
+player = NodePath("../..")
+
+[node name="CollisionShape3D" parent="Camera3D/PlayerInteractor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0397949, -2.5296)
+shape = SubResource("BoxShape3D_k7rmg")
+
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="PlayerGui" parent="." instance=ExtResource("4_pq4wf")]
+
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+
+[editable path="Camera3D/PlayerInteractor"]

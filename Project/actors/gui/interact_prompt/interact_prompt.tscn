@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4s3aqg1wktx0"]
+
+[ext_resource type="Script" path="res://actors/gui/interact_prompt/interact_prompt.gd" id="1_eomag"]
+
+[node name="InteractPrompt" type="Node3D"]
+script = ExtResource("1_eomag")
+
+[node name="Label3D" type="Label3D" parent="."]
+text = "Gather"
