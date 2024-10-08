@@ -48,11 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5698, -4.19504, -8.46283)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_35wau")
 
-<<<<<<< HEAD
-[node name="Player" parent="." instance=ExtResource("1_3lpdm")]
-=======
 [node name="Player" parent="." instance=ExtResource("1_1pe1h")]
->>>>>>> origin/prototypemap
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72045, 344.977, -57.413)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -70,20 +66,14 @@ transform = Transform3D(0.0101168, 0, 0, 0, 1, 0, 0, 0, 0.0113752, 0, 0, 0)
 transform = Transform3D(98.8453, 0, 0, 0, 0.999999, 0, 0, 0, 87.9103, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_5u7md")
 
-<<<<<<< HEAD
-[node name="tower_placeholder" parent="." instance=ExtResource("3_h07on")]
-=======
+
 [node name="tower_placeholder" parent="." instance=ExtResource("3_8w3li")]
->>>>>>> origin/prototypemap
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -2.87542, 0.499999, -62.8048)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(6.17563, 0, 0, 0, 1, 0, 0, 0, 6.3319, 8.85823, 3.96032, 29.4041)
-<<<<<<< HEAD
-material_override = ExtResource("2_5rbbn")
-=======
+
 material_override = ExtResource("2_2ulti")
->>>>>>> origin/prototypemap
 mesh = SubResource("BoxMesh_7q5yj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
@@ -93,11 +83,7 @@ shape = SubResource("ConcavePolygonShape3D_mc678")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(13.418, 0, 0, 0, 1.00282, 0, 0, 0, 27.6343, 34.6989, 7.95354, 24.3008)
-<<<<<<< HEAD
-material_override = ExtResource("2_5rbbn")
-=======
 material_override = ExtResource("2_2ulti")
->>>>>>> origin/prototypemap
 mesh = SubResource("BoxMesh_7q5yj")
 skeleton = NodePath("../MeshInstance3D2")
 
@@ -108,11 +94,7 @@ shape = SubResource("ConcavePolygonShape3D_pgrna")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(20.0389, 0, 0, 0, 1, 0, 0, 0, 17.2928, 6.51727, 11.5594, -1.52256)
-<<<<<<< HEAD
-material_override = ExtResource("2_5rbbn")
-=======
 material_override = ExtResource("2_2ulti")
->>>>>>> origin/prototypemap
 mesh = SubResource("BoxMesh_7q5yj")
 skeleton = NodePath("../MeshInstance3D3")
 
@@ -123,11 +105,7 @@ shape = SubResource("ConcavePolygonShape3D_ywhe2")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 transform = Transform3D(5.61883, 0, 0, 0, 1, 0, 0, 0, 5.89687, 22.9336, 14.7475, -15.5688)
-<<<<<<< HEAD
-material_override = ExtResource("2_5rbbn")
-=======
 material_override = ExtResource("2_2ulti")
->>>>>>> origin/prototypemap
 mesh = SubResource("BoxMesh_7q5yj")
 skeleton = NodePath("../MeshInstance3D4")
 
@@ -138,11 +116,7 @@ shape = SubResource("ConcavePolygonShape3D_kvmr3")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.2912, 19.8016, 147.02)
-<<<<<<< HEAD
-material_override = ExtResource("2_5rbbn")
-=======
 material_override = ExtResource("2_2ulti")
->>>>>>> origin/prototypemap
 mesh = SubResource("BoxMesh_7q5yj")
 skeleton = NodePath("../MeshInstance3D5")
 
@@ -153,11 +127,7 @@ shape = SubResource("ConcavePolygonShape3D_05vgl")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6949, 12.5048, -53.6942)
-<<<<<<< HEAD
-material_override = ExtResource("2_5rbbn")
-=======
 material_override = ExtResource("2_2ulti")
->>>>>>> origin/prototypemap
 mesh = SubResource("BoxMesh_7q5yj")
 skeleton = NodePath("../MeshInstance3D6")
 
