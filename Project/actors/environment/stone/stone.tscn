@@ -20,7 +20,7 @@ albedo_texture = SubResource("NoiseTexture2D_5bnra")
 
 [sub_resource type="PrismMesh" id="PrismMesh_vjnic"]
 
-[node name="Stone" instance=ExtResource("1_7n18s")]
+[node name="Stone" groups=["gather_node", "nav_mesh", "stone"] instance=ExtResource("1_7n18s")]
 
 [node name="CollisionShape3D" parent="Interactable" index="0"]
 transform = Transform3D(0.776629, 0.344758, -0.527247, -0.629958, 0.425027, -0.650004, 5.96046e-08, 0.836955, 0.547272, 0, 0, 0)
@@ -34,5 +34,7 @@ mesh = SubResource("PrismMesh_vjnic")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(0.776629, 0.344758, -0.527246, -0.629958, 0.425027, -0.650004, 0, 0.836955, 0.547271, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_0ywds")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="5"]
 
 [editable path="Interactable"]

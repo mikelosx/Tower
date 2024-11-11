@@ -202,6 +202,7 @@ script = ExtResource("1_5opnp")
 DataPath = "res://scenes/Proto_map/Node3D"
 TextureSets = SubResource("Resource_3asvl")
 Foliages = [SubResource("Resource_o3i1e")]
+Objects = []
 WaterDefinition = SubResource("Resource_c3e2n")
 TerrainZones = SubResource("Resource_6mvp2")
 metadata/_edit_lock_ = false

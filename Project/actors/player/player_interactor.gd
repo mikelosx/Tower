@@ -7,7 +7,7 @@ var interactable: Interactable
 func _ready() -> void:
 	controller = player
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	var n: Interactable = get_closest_interactable()
 	
 	if n != interactable:

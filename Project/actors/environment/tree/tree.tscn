@@ -37,7 +37,7 @@ albedo_texture = SubResource("NoiseTexture2D_x3h2a")
 
 [sub_resource type="SphereMesh" id="SphereMesh_s4u0d"]
 
-[node name="Tree" instance=ExtResource("1_clo30")]
+[node name="Tree" groups=["nav_mesh"] instance=ExtResource("1_clo30")]
 wood = true
 
 [node name="InteractPrompt" parent="." index="0"]
