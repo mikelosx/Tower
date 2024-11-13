@@ -15,6 +15,7 @@ const TOTAL_DASHES = 1
 var dashing = false
 var dash_off_cooldown = true
 var dash_count = 1
+var inv = Inventory.new()
 
 
 func _input(event: InputEvent) -> void:

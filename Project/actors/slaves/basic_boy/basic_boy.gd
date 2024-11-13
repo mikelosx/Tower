@@ -16,4 +16,5 @@ func _physics_process(delta: float) -> void:
 		velocity = new_velocity
 		move_and_slide()
 	else:
-		$Interactor.interact(interactable)
+		print("testdgfu9wehfgoi")
+		$Interactor.interact($Interactor.get_closest_interactable())

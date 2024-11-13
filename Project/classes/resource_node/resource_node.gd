@@ -31,12 +31,13 @@ func _on_interactable_unfocused(interactor: Interactor) -> void:
 
 
 func _on_interactable_interacted(interactor: Interactor) -> void:
-	if wood: interactor.inv.wood += 1
-	elif TOre: interactor.inv.TOre += 1
-	else: interactor.inv.stone += 1
+	var x = interactor.get_parent()
+	if x.get_class() == "Camera3D": x = x.get_parent()
+	if wood: x.inv.wood += 1
+	elif TOre: x.inv.t_ore += 1
+	else: x.inv.stone += 1
 	quantity -= 1
 	if $RegenTimer.is_stopped: $RegenTimer.start()
-	
 	if quantity <= 0:
 		_resource_depleted()
 
